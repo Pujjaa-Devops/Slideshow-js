@@ -1,32 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar</title>
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
+    <title>Slideshow</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+        }
+
+        .image-sliderfade {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100vh; /* Ensures the image covers the full screen */
+            object-fit: cover; /* Ensures the image fills the container */
+            vertical-align: middle;
+        }
+
+        /* Slideshow container */
+        .container {
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 20px 15px;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 40%;
+            background: rgba(0, 0, 0, 0.7);
+            text-align: left;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: transparent;
+            border-color: #ddd;
+            border-width: 5px;
+            border-style: solid;
+            border-radius: 50%;
+            display: inline-block;
+            transition: border-color 0.6s ease;
+        }
+
+        .active {
+            border-color: #666;
+        }
+
+        /* Animation */
+        .fade {
+            -webkit-animation-name: fade-image;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade-image;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade-image {
+            from {
+                opacity: 0.4;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-image {
+            from {
+                opacity: 0.4;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .text {
+                font-size: 11px;
+            }
+        }
+    </style>
 </head>
 <body>
- 
-    <div class="sidebar" id="sidebar">
-        <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
-        <ul class="menu-list">
-            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
-            <li><a href="#"><i class="fas fa-comment"></i> Comments</a></li>
-        </ul>
+    <!-- Slideshow Container Div -->
+    <div class="container">
+        <!-- Full-width images with caption text -->
+        <div class="image-sliderfade fade">
+            <img src="movie1.jpg" />
+            <div class="text">Movie</div>
+        </div>
+        <div class="image-sliderfade fade">
+            <img src="movie2.png" />
+            <div class="text">Movie</div>
+        </div>
+        <div class="image-sliderfade fade">
+            <img src="movie3.jpg" />
+            <div class="text">Movie</div>
+        </div>
+        <div class="image-sliderfade fade">
+            <img src="movie4.jpg" />
+            <div class="text">Movie</div>
+        </div>
     </div>
 
-  
-    <div class="main-content">
-        <button class="open-btn" id="openBtn"><i class="fas fa-bars"></i> Open Sidebar</button>
+    <!-- The dots/circles -->
+    <div style="text-align: center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("image-sliderfade");
+            let dots = document.getElementsByClassName("dot");
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+
+            setTimeout(showSlides, 2000);
+        }
+    </script>
 </body>
 </html>

@@ -1,18 +1,17 @@
-/* General Reset */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Light neutral background */
+    background-color: #f8f9fa; 
 }
 
-/* Sidebar Styles */
+
 .sidebar {
     height: 100%;
     width: 0;
     position: fixed;
     top: 0;
     left: 0;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient from purple to blue */
+    background: linear-gradient(135deg, #6a11cb, #2575fc); 
     color: white;
     overflow-x: hidden;
     transition: 0.5s;
@@ -60,10 +59,9 @@ body {
 }
 
 .menu-list li a:hover {
-    color: #ff9800; /* Vibrant orange for hover */
+    color: #ff9800;
 }
 
-/* Main Content */
 .main-content {
     padding: 20px;
     margin-left: 20px;
@@ -80,16 +78,16 @@ body {
     top: 20px;
     left: 20px;
     border-radius: 8px;
-    transition: background 0.3s, transform 0.2s;
+    transition:  0.3s, transform 0.2s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .open-btn:hover {
-    background: #ff9800; /* Bright orange for hover */
+    background: #ff9800; 
     transform: scale(1.1);
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .menu-list li {
         padding: 12px 20px;
